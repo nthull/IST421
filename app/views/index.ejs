@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:ng="https://angularjs.org">
 	<head>
 		<title><%= title %></title>
 	</head>
 	<body onload="addText()">
 		<h1><%= title %></h1>
+
+		
+		<% if ( userFullName ) { %>
+			<h2>Hello <%=userFullName%> </h2> 
+			<a href="/signout">Sign out</a>
+		<% } else { %>
+			<a href="/signup">Signup</a>
+			<a href="/signin">Signin</a>
+		<% } %>
 
 		<script>
 			function addText() {
@@ -14,5 +23,14 @@
 				document.body.appendChild(para);
 			}
 		</script>
+		
+		<section ng-view></section>
+
+		<script type="text/javascript" src="/lib/angular/angular.js"></script>
+		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+		<script type="text/javascript" src="/example/example.client.module.js"></script>
+		<script type="text/javascript" src="/example/config/example.client.routes.js"></script>
+		<script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
+		<script type="text/javascript" src="/application.js"></script>
 	</body>
 </html>
