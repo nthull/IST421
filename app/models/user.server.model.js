@@ -5,16 +5,8 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
     firstName: String,
     lastName: String,
-    email: {
-        type: String,
-        index: true,
-        match: /.+\@.+\..+/
-    },
     username: {
         type: String,
-        trim: true,
-        unique: true,
-        required: 'Username is required'
     },
     password: {
         type: String,
@@ -25,6 +17,9 @@ var UserSchema = new Schema({
             'Password should be longer'
         ]
     },
+    coursesTaken: [
+        {type: String
+        }],
     salt: {
         type: String
     },
@@ -40,22 +35,28 @@ var UserSchema = new Schema({
     },
     role: {
         type: String,
-        enum: ['Admin', 'Owner', 'User']
+        enum: ['Admin', 'Teacher', 'Student']
     },
-    website: {
-        type: String,
-        get: function (url) {
-            if (!url) {
-                return url;
-            } else {
-                if (url.indexOf('http://') !== 0 && url.indexOf('https://') !== 0) {
-                    url = 'http://' + url;
-                }
-                return url;
-            }
-        }
-    }
-});
+    
+},
+    { collection: 'psuStudents' });
+
+
+var CourseSchema = new Schema({
+    courseID: String,
+    courseName: String,
+    courseNumber: String,
+    startTime: String,
+    finishTime: String,
+    startDate: Date,
+    finishDate: Date,
+    courseLecturer: String,
+    creditAmount: Number,
+    courseDescription: String,
+    courseLocation: String,
+    classDays: [{ type: String }]
+},
+    { collection: 'psuCourses' });
 
 UserSchema.virtual('fullName').get(function () {
     return this.firstName + ' ' + this.lastName;
@@ -81,28 +82,10 @@ UserSchema.methods.authenticate = function (password) {
     return this.password === this.hashPassword(password);
 };
 
-UserSchema.statics.findUniqueUsername = function (username, suffix, callback) {
-    var _this = this;
-    var possibleUsername = username + (suffix || '');
-
-    _this.findOne({
-        username: possibleUsername
-    }, function (err, user) {
-        if (!err) {
-            if (!user) {
-                callback(possibleUsername);
-            } else {
-                return _this.findUniqueUsername(username, (suffix || 0) + 1, callback);
-            }
-        } else {
-            callback(null);
-        }
-    });
-};
-
 UserSchema.set('toJSON', {
     getters: true,
     virtuals: true
 });
 
 mongoose.model('User', UserSchema);
+mongoose.model('Course', CourseSchema);

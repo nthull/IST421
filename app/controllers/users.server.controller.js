@@ -1,4 +1,5 @@
 var User = require('mongoose').model('User'),
+    Course = require('mongoose').model('Course'),
     passport = require('passport');
 
 var getErrorMessage = function (err) {
@@ -6,8 +7,8 @@ var getErrorMessage = function (err) {
 
     if (err.code) {
         switch (err.code) {
-            case 11000:
-            case 11001:
+                case 11000:
+                case 11001:
                 message = 'Username already exists';
                 break;
             default:
@@ -94,6 +95,17 @@ exports.list = function (req, res, next) {
     });
 };
 
+exports.studentCoursesTaken = function (req, res, next) {
+    //Need to make this findOne, where the find is psuID and then courses are displayed
+    User.find({ psuID: req.user.psuID }, function (err, user) {
+        if (err) {
+            return next(err);
+        } else {
+            res.json(req.user.coursesTaken);
+        }
+    })
+};
+
 exports.read = function (req, res) {
     res.json(req.user);
 };
@@ -129,4 +141,14 @@ exports.delete = function (req, res, next) {
             res.json(req.user);
         }
     })
+};
+
+exports.courselist = function (req, res, next) {
+    Course.find({}, function (err, courses) {
+        if (err) {
+            return next(err);
+        } else {
+            res.json(courses);
+        }
+    });
 };

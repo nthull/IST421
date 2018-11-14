@@ -14,7 +14,10 @@ module.exports = function (app) {
         .delete(users.delete);
     app.param('userId', users.userByID);
 
-
+    app.route('/users/:userId/courses')
+        .get(users.studentCoursesTaken);
+    app.param('userId', users.userByID);
+    
     app.route('/signup')
         .get(users.renderSignup)
         .post(users.signup);
@@ -26,7 +29,9 @@ module.exports = function (app) {
             failureRedirect: '/signin',
             failureFlash: true
         }));
-
+    app.route('/courseList')
+        .get(users.courselist)
     app.get('/signout', users.signout);
+
 
 };
