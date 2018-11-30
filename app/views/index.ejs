@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:ng="https://angularjs.org">
 	<head>
+		<link rel="stylesheet" type="text/css" href="/css/index.css">
 		<title><%= title %></title>
 	</head>
 	<body onload="addText()">
@@ -23,5 +24,285 @@
 		<script type="text/javascript" src="/example/config/example.client.routes.js"></script>
 		<script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
 		<script type="text/javascript" src="/application.js"></script>
+		 
+	   
+		<div class="container">
+		<h5>Search Criteria</h5>
+	     <form id="Search">
+          <div class="row">	
+	         <div class="col-25>
+	           <label>Institution</label>
+			 </div>
+	         <div class="col-75"> 
+				<select>
+					<option value="PennState">The Pennsylvania State University</option>
+				</select>
+			</div>
+				
+           </div>
+		   <div class="row">
+	         <div class="col-25>
+	            <label>Term</label>
+			 </div>
+	         <div class="col-75">
+				<select>
+					<option value="Fall2018">Fall 2018</option>
+					<option value="Spring2019">Spring 2019</option>
+				</select>
+		     </div>
+		    </div>
+		    <div class="row">
+	          <div class="col-25>
+	            <label>Campus</label>
+		  	  </div>
+	          <div class="col-75">
+				<select>
+					<option value="AB">AB - Abington</option>
+					<option value="AL">AL - Altoona</option>
+					<option value="BK">BK - Berks</option>
+					<option value="BW">BW - Brandywine</option>
+					<option value="ER">ER - Erie</option>
+					<option value="GV">GV - Great Valley</option>
+					<option value="UP">UP - University Park</option>
+				</select>
+		 	 </div>
+			</div>
+	        <div class="row">
+	          <div class="col-25>
+	            <label>Subject</label>
+			  </div>
+	          <div class="col-75">
+				<select>
+					<option value="IST">IST - Information Science and Techonology</option>
+					<option value="HIST">HIST - History</option>
+					<option value="BISC">BISC - Enviromental Science</option>						<option value="RHS">RHS - Rehab & Human Services</option>
+					<option value="SPAN">SPAN - Spanish</option>
+					<option value="ENG">ENG - English</option>
+					<option value="PSY">PSY - Psychology</option>
+				</select>
+	   		 </div>
+			</div>
+			<div class="row">
+	          <div class="col-25>
+	            <label>Course Number</label>
+	          </div>
+			  <div class="col-75">
+				<select>
+					<option value="exactly">Is exactly</option>
+					<option value="contains">Contains</option>
+					<option value="greater">Greater than or equal to</option>
+					<option value="less">Less than or equal to</option>
+				</select>
+ 			  </div>
+	          <div class="col-75"><input name="courseNumber" type"text"></div>
+			</div>
+			<div class="row">
+	          <div class="col-25>
+	            <label>Days of the Week</label>
+			  </div>
+	          <div class="col-75">
+				<select>
+					<option value="mwf">Mon-Wed-Fri</option>
+					<option value="mwd">Mon-Wed</option>
+					<option value="tt">Tu-Th</option>
+					<option value="mon">Mon</option>
+					<option value="tue">Tue</option>
+					<option value="wed">Wed</option>
+					<option value="thu">Thu</option>
+					<option value="fri">Fri</option>
+					<option value="web">Web</option>
+				</select>
+			  </div>
+			</div>
+			<div class="row">
+	          <div class="col-25>
+	            <label>Meeting Time</label>
+			  </div>
+	          <div class="col-75">
+				<select>
+					<option value="8-9">8:00am - 9:00am</option>
+					<option value="9-10">9:00am - 10:00am</option>
+					<option value="10-11">10:00am - 11:00am</option>
+					<option value="11-12">11:00am - 12:00pm</option>
+					<option value="1-2">1:00pm - 2:00pm</option>	
+					<option value="2-3">2:00pm - 3:00pm</option>
+					<option value="3-4">3:00pm - 4:00pm</option>
+					<option value="4-5">4:00pm - 5:00pm</option>
+					<option value="6-9">6:00pm - 9:00pm</option>
+				</select>
+		 	  </div>   
+			</div>
+			<div class="row">
+				<button >Search  <i class="fa fa-arrow-right"></i></button>
+			</div>
+	      </form>
+		</div>
+
+	  <hr>
+	
+	  <div>
+	    <h5>Enroll Classes</h5>
+	    <table id="enroll" align="center" cellpadding=10px cellspacing=20px>
+	      <tr>
+	        <td>IST</td>
+	        <td>100</td>
+			<td>Mon-Wed-Fri</td>
+			<td>8-9am</td>
+	      </tr>
+	      <tr>
+	        <td>Environmental Science</td>
+	        <td>003</td>
+			<td>Tu-Th</td>
+			<td>10-11am</td>
+	      </tr>
+	      <tr>
+	        <td>History</td>
+	        <td>120</td>
+			<td>Mo-We-Fri</td>
+			<td>10-11am</td>
+	      </tr>
+	      <tr>
+	        <td>Spanish</td>
+	        <td>140</td>
+			<td>Mo-We-Fri</td>
+			<td>11am-12pm</td>
+	      </tr>
+	      <tr>
+	        <td>RHS</td>
+	        <td>100</td>
+			<td>Tu-Th</td>
+			<td>3pm-4pm</td>
+	      </tr>
+	    </table><br>
+	    <button>Look availability </button>
+	  </div>
+
+	  <div>
+	    <h5>Schedule</h5>
+		<button >Week View </button>
+	    <table id="Schedule">
+	      <tr>
+	      	<th>Time</th>
+	        <th>Monday</th>
+			<th>Tuesday</th>
+			<th>Wednesday</th>
+			<th>Thursday</th>
+			<th>Friday</th>
+	      </tr>
+	      <tr>
+	      	<th>8 am</th>
+	        <td></td>
+	        <td>History 120</td>
+			<td></td>
+			<td>History 120</td>
+			<td></td>
+			
+	      </tr>
+	      <tr>
+	      	<th>9 am</th>
+	        <td></td>
+	        <td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+	      </tr>
+	      <tr>
+	      	<th>10 am</th>
+	        <td>Spanish 140</td>
+	        <td></td>
+			<td>Spanish 140</td>
+			<td></td>
+			<td>Spanish 140</td>
+	      </tr>
+	      <tr>
+	      	<th>11 am</th>
+	        <td></td>
+	        <td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+	      </tr>
+	      <tr>
+	      	<th>12 pm</th>
+	        <td></td>
+	        <td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+	      </tr>
+	      <tr>
+	      	<th>1 pm</th>
+	        <td>IST 100</td>
+	        <td></td>
+			<td>IST 100</td>
+			<td></td>
+			<td>IST 100</td>
+	      </tr>
+	      <tr>
+	      	<th>2 pm</th>
+	        <td>BISC 3</td>
+	        <td></td>
+			<td>BISC 3</td>
+			<td></td>
+			<td>BISC 3</td>
+	      </tr>
+	      <tr>
+	      	<th>3 pm</th>
+	        <td></td>
+	        <td>RHS 100</td>
+			<td></td>
+			<td>RHS 100</td>
+			<td></td>
+	      </tr>
+	      <tr>
+	      	<th>4 pm</th>
+	        <td></td>
+	        <td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+	      </tr>
+	      <tr>
+	      	<th>5 pm</th>
+	        <td></td>
+	        <td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+	      </tr>
+	      <tr>
+	      	<th>6 pm</th>
+	        <td></td>
+	        <td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+	      </tr>
+	      <tr>
+	      	<th>7 pm</th>
+	        <td></td>
+	        <td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+	      </tr>
+	      <tr>
+	      	<th>8 pm</th>
+	        <td></td>
+	        <td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+	      </tr>
+	      <tr>
+	      	<th>9 pm</th>
+	        <td></td>
+	        <td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+	      </tr>
+	    </table>
+	  </div>
 	</body>
 </html>
