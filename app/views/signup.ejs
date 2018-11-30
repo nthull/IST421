@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="/css/signup.css">
   <title>
     <%=title %>
   </title>
@@ -10,7 +11,8 @@
     <div class="flash"><%= messages[i] %></div>
   <% } %>
   <form action="/signup" method="post">
-    <div>
+   <div class="container">
+	<div>
       <label>First Name:</label>
       <input type="text" name="firstName" />
     </div>
@@ -26,7 +28,11 @@
 		<input type="password" name="password" />
 	</div>
 	<div>
-		<input type="submit" value="Sign up" />
+		<input class="registerbtn" type="submit" value="Sign up" />
+	</div>
+	<div class="container signin">
+    <p>Already have an account? <a href="/signin">Sign in</a>.</p>
+  </div>
 	</div>
   </form>
 </body>

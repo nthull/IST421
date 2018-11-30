@@ -17,6 +17,7 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #003366;
+    opacity: 0.8;
 }
 
 #Schedule table, td, th {
