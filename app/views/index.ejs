@@ -73,13 +73,14 @@
 			  </div>
 	          <div class="col-75">
 				<select>
-					<option value="IST">IST - Information Science and Techonology</option>
+					<option value="IST421">IST - Information Science and Techonology</option>
 					<option value="HIST">HIST - History</option>
 					<option value="BISC">BISC - Enviromental Science</option>						<option value="RHS">RHS - Rehab & Human Services</option>
 					<option value="SPAN">SPAN - Spanish</option>
 					<option value="ENG">ENG - English</option>
 					<option value="PSY">PSY - Psychology</option>
 				</select>
+				<button type="submit" ng-click="addCourse()">
 	   		 </div>
 			</div>
 			<div class="row">
@@ -303,6 +304,14 @@
 			<td></td>
 	      </tr>
 	    </table>
+		<div ng-Controller="showCourses">
+			<table>
+				<tr ng-repeat="x in courses">
+					<td>{{x.courseID}}</td>
+					<td>{{x.courseName}}</td>
+				</tr>
+			<table>
+		</div>
 	  </div>
 	</body>
 </html>
