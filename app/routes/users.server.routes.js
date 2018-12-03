@@ -15,13 +15,15 @@ module.exports = function (app) {
     app.param('userId', users.userByID);
 
     app.route('/users/:userId/courses')
-        .get(users.studentCoursesTaken);
+        .get(users.studentCoursesTaken)
+        .post(users.addClass)
+        .delete(users.courseScheduleDelete);
     app.param('userId', users.userByID);
     
     app.route('/signup')
         .get(users.renderSignup)
         .post(users.signup);
-
+    app.route('/users/:userId/addCourse')
     app.route('/signin')
         .get(users.renderSignin)
         .post(passport.authenticate('local', {

@@ -17,9 +17,10 @@ var UserSchema = new Schema({
             'Password should be longer'
         ]
     },
-    coursesTaken: [
-        {type: String
-        }],
+    coursesTaken: {
+            type: Schema.ObjectId,
+            ref: 'Course'
+        },
     salt: {
         type: String
     },
