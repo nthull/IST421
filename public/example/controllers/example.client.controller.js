@@ -7,7 +7,7 @@ angular.module('example').controller('courseController', function ($scope, $http
         .then(function (response) { $scope.courses = response.data })
 
         $scope.studentAddCourse = function () {
-            $http.put('/courseList', $scope.course ).success(function (addCourse) {
+            $http.put('/courseList', { addCourse : $scope.course }  ).success(function (addCourse) {
 
             });
         };

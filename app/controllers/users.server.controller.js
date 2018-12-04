@@ -107,14 +107,17 @@ exports.studentCoursesTaken = function (req, res, next) {
 };
 
 exports.studentAddCourse = function (req, res, next) {
-    var addCourse = req.body.courseID
+    var addCourse = req.body
 
     if (!req.body) {
         return res.send(400);
     }
     User.findByIdAndUpdate({ psuID: req.user.psuID }, addCourse, function (err, user) {
-        if (err) 
+        if (err) {
             res.send(err);
+        } else {
+            res.json(user);
+        }
     });
 };
 
