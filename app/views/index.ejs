@@ -4,7 +4,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/index.css">
 		<title><%= title %></title>
 	</head>
-	<body onload="addText()">
+	<body>
 		<h1><%= title %></h1>
 
 		
@@ -20,6 +20,7 @@
 
 		<script type="text/javascript" src="/lib/angular/angular.js"></script>
 		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+		<script type="text/javascript" src="/example/example.client.module.js"></script>
 		<script type="text/javascript" src="/example/example.client.module.js"></script>
 		<script type="text/javascript" src="/example/config/example.client.routes.js"></script>
 		<script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
@@ -304,13 +305,14 @@
 			<td></td>
 	      </tr>
 	    </table>
-		<div ng-Controller="showCourses">
+		<div ng-Controller="courseController">
 			<table>
 				<tr ng-repeat="x in courses">
-					<td>{{x.courseID}}</td>
+				
+					<td><button ng-model="addCourse" ng-click="studentAddCourse()">Add {{x.courseID}}</button>{{x.courseID}}</td>
 					<td>{{x.courseName}}</td>
 				</tr>
-			<table>
+			</table>
 		</div>
 	  </div>
 	</body>

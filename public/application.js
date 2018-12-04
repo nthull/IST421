@@ -1,4 +1,4 @@
-var mainApplicationModuleName = 'mean';
+var mainApplicationModuleName = 'psuDB';
 
 var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute','example']);
 

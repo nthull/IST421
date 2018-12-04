@@ -33,10 +33,7 @@ var UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    role: {
-        type: String,
-        enum: ['Admin', 'Teacher', 'Student']
-    },
+    
     
 },
     { collection: 'psuStudents' });

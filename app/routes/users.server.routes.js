@@ -7,7 +7,6 @@ module.exports = function (app) {
         .post(users.create)
         .get(users.list);
 
-
     app.route('/users/:userId')
         .get(users.read)
         .put(users.update)
@@ -15,7 +14,8 @@ module.exports = function (app) {
     app.param('userId', users.userByID);
 
     app.route('/users/:userId/courses')
-        .get(users.studentCoursesTaken);
+        .get(users.studentCoursesTaken)
+        
     app.param('userId', users.userByID);
     
     app.route('/signup')
@@ -30,7 +30,9 @@ module.exports = function (app) {
             failureFlash: true
         }));
     app.route('/courseList')
-        .get(users.courselist)
+        .put(users.studentAddCourse)
+        .get(users.courselist);
+
     app.get('/signout', users.signout);
 
 
