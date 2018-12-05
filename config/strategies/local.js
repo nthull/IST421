@@ -8,6 +8,7 @@ module.exports = function () {
             username : username
         }, function (err, user) {
             if (err) {
+                alert(err)
                 return done(err);
             }
 

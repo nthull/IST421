@@ -7,15 +7,13 @@ module.exports = function (app) {
         .post(users.create)
         .get(users.list);
 
-    app.route('/users/:userId')
+    app.route('/users/:username')
         .get(users.read)
         .put(users.update)
         .delete(users.delete);
-    app.param('userId', users.userByID);
 
     app.route('/users/:userId/courses')
         .get(users.studentCoursesTaken)
-        
     app.param('userId', users.userByID);
     
     app.route('/signup')

@@ -5,9 +5,7 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
     firstName: String,
     lastName: String,
-    username: {
-        type: String,
-    },
+    username: String,
     password: {
         type: String,
         validate: [
@@ -17,9 +15,7 @@ var UserSchema = new Schema({
             'Password should be longer'
         ]
     },
-    coursesTaken: {
-        type: String
-    },
+    coursesTaken: [{}],
     salt: {
         type: String
     },
@@ -32,7 +28,7 @@ var UserSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
-    },
+    }
     
     
 },

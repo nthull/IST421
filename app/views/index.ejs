@@ -309,7 +309,7 @@
 			<table>
 				<tr ng-repeat="x in courses">
 				
-					<td><button ng-model="addCourse" ng-click="studentAddCourse()">Add {{x.courseID}}</button>{{x.courseID}}</td>
+					<td><button ng-click="studentAddCourse(x)">Add {{x.courseID}}</button>{{x.courseID}}</td>
 					<td>{{x.courseName}}</td>
 				</tr>
 			</table>

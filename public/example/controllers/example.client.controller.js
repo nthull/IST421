@@ -6,8 +6,10 @@ angular.module('example').controller('courseController', function ($scope, $http
         $http.get('/courseList')
         .then(function (response) { $scope.courses = response.data })
 
-        $scope.studentAddCourse = function () {
-            $http.put('/courseList', { addCourse : $scope.course }  ).success(function (addCourse) {
+        $scope.studentAddCourse = function (course) {
+            
+            $http.put('/users/:username', course)
+                .then(function (res) {
 
             });
         };

@@ -6,10 +6,8 @@ exports.render = function (req, res) {
         console.log(req.session.lastVisit);
     }
 
-    req.session.lastVisit = new Date();
-
     res.render('index', {
-        title: 'Hello World',
+        title: 'PSU Course List',
         userFullName: req.user ? req.user.fullName : ''
     });
 };

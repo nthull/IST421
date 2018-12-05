@@ -97,7 +97,7 @@ exports.list = function (req, res, next) {
 
 exports.studentCoursesTaken = function (req, res, next) {
     //Need to make this findOne, where the find is psuID and then courses are displayed
-    User.find({ psuID: req.user.psuID }, function (err, user) {
+    User.find({ username: req.user.username }, function (err, user) {
         if (err) {
             return next(err);
         } else {
@@ -121,12 +121,20 @@ exports.studentAddCourse = function (req, res, next) {
     });
 };
 
-exports.read = function (req, res) {
-    res.json(req.user);
-};
-exports.userByID = function (req, res, next, id) {
-    User.find({
-        psuID: req.user.psuID
+exports.read = function (req, res, next) {
+    User.findOne({
+        username : req.params.username
+    }, function(err, user) {
+        if (err) {
+            return next(err);
+        } else {
+            res.json(user);
+        }
+    });
+}
+exports.userByID = function (req, res, next, username) {
+    User.findOne({
+        username: req.params.username
     }, function (err, user) {
         if (err) {
             return next(err);
@@ -138,8 +146,14 @@ exports.userByID = function (req, res, next, id) {
 };
 
 exports.update = function (req, res, next) {
-    User.find(req.user.id, req.body, function (err,
-        user) {
+    var data = req.body;
+    User.findOneAndUpdate({
+        username: req.user.username
+    }, {
+        $push: {
+            coursesTaken: { data } }
+        }, function(err, user) {
+        
         if (err) {
             return next(err);
         } else {
