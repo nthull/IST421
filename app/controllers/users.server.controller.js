@@ -107,7 +107,7 @@ exports.studentCoursesTaken = function (req, res, next) {
 };
 
 exports.studentAddCourse = function (req, res, next) {
-    var addCourse = req.body
+    var addCourse = req.body;
 
     if (!req.body) {
         return res.send(400);
@@ -118,20 +118,35 @@ exports.studentAddCourse = function (req, res, next) {
         } else {
             res.json(user);
         }
-    });
+    })
+};
+
+exports.studentDeleteCourse = function (req, res, next) {
+    var deleteCourse = req.body;
+
+    if (!req.body) {
+        return res.send(400);
+    }
+    User.findByIdAndUpdate({ psuID: req.user.psuID.coursesTaken }, deleteCourse, function (err, user) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(user);
+        }
+    })
 };
 
 exports.read = function (req, res, next) {
     User.findOne({
-        username : req.params.username
-    }, function(err, user) {
+        username: req.params.username
+    }, function (err, user) {
         if (err) {
             return next(err);
         } else {
             res.json(user);
         }
-    });
-}
+    })
+};
 exports.userByID = function (req, res, next, username) {
     User.findOne({
         username: req.params.username

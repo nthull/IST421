@@ -13,7 +13,8 @@ module.exports = function (app) {
         .delete(users.delete);
 
     app.route('/users/:userId/courses')
-        .get(users.studentCoursesTaken)
+        .get(users.studentCoursesTaken);
+     
     app.param('userId', users.userByID);
     
     app.route('/signup')
@@ -29,7 +30,8 @@ module.exports = function (app) {
         }));
     app.route('/courseList')
         .put(users.studentAddCourse)
-        .get(users.courselist);
+        .get(users.courselist)
+        .delete(users.studentDeleteCourse);
 
     app.get('/signout', users.signout);
 

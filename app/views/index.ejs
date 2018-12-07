@@ -135,51 +135,34 @@
 		 	  </div>   
 			</div>
 			<div class="row">
-				<button >Search  <i class="fa fa-arrow-right"></i></button>
+				<button >Search</button>
 			</div>
 	      </form>
 		</div>
 
-	  <hr>
-	
-	  <div>
-	    <h5>Enroll Classes</h5>
-	    <table id="enroll" align="center" cellpadding=10px cellspacing=20px>
-	      <tr>
-	        <td>IST</td>
-	        <td>100</td>
-			<td>Mon-Wed-Fri</td>
-			<td>8-9am</td>
-	      </tr>
-	      <tr>
-	        <td>Environmental Science</td>
-	        <td>003</td>
-			<td>Tu-Th</td>
-			<td>10-11am</td>
-	      </tr>
-	      <tr>
-	        <td>History</td>
-	        <td>120</td>
-			<td>Mo-We-Fri</td>
-			<td>10-11am</td>
-	      </tr>
-	      <tr>
-	        <td>Spanish</td>
-	        <td>140</td>
-			<td>Mo-We-Fri</td>
-			<td>11am-12pm</td>
-	      </tr>
-	      <tr>
-	        <td>RHS</td>
-	        <td>100</td>
-			<td>Tu-Th</td>
-			<td>3pm-4pm</td>
-	      </tr>
-	    </table><br>
-	    <button>Look availability </button>
-	  </div>
+	  
+	  	<div ng-Controller="courseController">
+		<h5>Add Courses</h5>
+			<table>
+				<tr ng-repeat="x in courses">
+				
+					<td><button ng-click="studentAddCourse(x)">Add {{x.courseID}}</button>{{x.courseID}}</td>
+					<td>{{x.courseName}}</td>
+				</tr>
+			</table>
+		</div>
+	<div>
+	</div>
+	  	<div ng-Controller="courseController">
+			<h5>Delete Courses</h5>
+			<table>
+				<tr ng-repeat="x in courses">
+				
+					<td><button ng-click="studentDeleteCourse(x)">Delete {{x.courseID}}</button>{{x.courseID}}</td>
+					<td>{{x.courseName}}</td>
+				</tr>
+			</table>
 
-	  <div>
 	    <h5>Schedule</h5>
 		<button >Week View </button>
 	    <table id="Schedule">
@@ -305,15 +288,6 @@
 			<td></td>
 	      </tr>
 	    </table>
-		<div ng-Controller="courseController">
-			<table>
-				<tr ng-repeat="x in courses">
-				
-					<td><button ng-click="studentAddCourse(x)">Add {{x.courseID}}</button>{{x.courseID}}</td>
-					<td>{{x.courseName}}</td>
-				</tr>
-			</table>
-		</div>
 	  </div>
 	</body>
 </html>
