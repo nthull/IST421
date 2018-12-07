@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="/css/signin.css">
   <title>
     <%=title %>
   </title>
@@ -10,7 +11,8 @@
     <div class="flash"><%= messages[i] %></div>
   <% } %>
   <form action="/signin" method="post">
-    <div>
+   <div class="container">
+	<div>
       <label>psuID:</label>
       <input type="text" name="username" />
     </div>
@@ -19,7 +21,11 @@
 		<input type="password" name="password" />
 	</div>
 	<div>
-		<input type="submit" value="Sign In" />
+		<input class="signInBtn" type="submit" value="Sign In" />
+	</div>
+	<div class="container signup">
+	<p>Don't have an account? <a href="/signup">Sign up</a>.</p>
+	</div>
 	</div>
   </form>
 </body>
